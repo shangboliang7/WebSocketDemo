@@ -89,6 +89,9 @@
     // 创建 SockJS 对象，连接到 WebSocket 端点
     const socket = new SockJS('http://localhost:8080/chat');
     const stompClient = Stomp.over(socket);
+    // 配置心跳检测（单位：毫秒）
+    // stompClient.heartbeat.outgoing = 10000; // 客户端每隔 10 秒发送一次心跳
+    // stompClient.heartbeat.incoming = 10000; // 期望服务端每隔 10 秒返回一次心跳
 
     // 连接到 WebSocket 服务
     stompClient.connect({}, function (frame) {
